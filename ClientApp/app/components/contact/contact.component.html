@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-10">
+    <div class="alert alert-success" *ngIf="success" role="alert">
+      Thank you! We'll reach out to you shortly!
+    </div>
+    <div class="alert alert-danger" *ngIf="error" role="alert">
+      Uh oh! Something went wrong. Try again. If the error persists let a staff member know.
+    </div>
+  </div>
+</div>
+<div class="row" [hidden]="success || error">
+  <div class="col-sm-10">
+    <form #f="ngForm" (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" [(ngModel)]="contact.name" name="name" #name="ngModel" id="name" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" name="email" id="email" [(ngModel)]="contact.email" #email="ngModel" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" rows="5" name="message" [(ngModel)]="contact.message" #message="ngModel" id="message"></textarea>
+      </div>
+      <button [disabled]="submitted" type="submit" class="btn btn-success">
+        <i class="glyphicon glyphicon-send"></i> &nbsp; Submit
+      </button>
+    </form>
+  </div>
+</div>
